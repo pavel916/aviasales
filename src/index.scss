@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+* body {
+  box-sizing: border-box;
+}
+
+.App {
+  background: #e5e5e5;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+.app-wrapper{
+  min-height: 100vh;
+  max-width: 754px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  
+ text-align: center;
+  
+}
+
+
+main{
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-areas: 
+  'said nav'
+  'said tic';
+}
+
+.visually-hidden{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.cheker{
+  margin-left: 5px
+}
+
+.sidebar{
+  grid-area: said;
+  color: #4a4a4a;
+  width: 232px;
+  background: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-right: 20px;
+  
+}
+.sidebar form{
+  margin-top: 10px;
+}
+.sidebar label{
+  padding: 10px 10px;
+  display: block;
+}
+.sidebar label:hover{
+  background: #f1fcff;
+}
+.sidebar h3{
+  margin-left: 10px;
+}
+
+
+.navigation{
+  grid-area: nav;
+  width: 500px;
+  height: 50px;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+}
+
+.filterTickets{
+  border-radius: 5px;
+  width: 250px;
+  text-align: center;
+  line-height: 50px;
+  background: #2196f3;
+  color: #ffffff;
+
+}
+
+
+.tickets_data-wrapper{
+  margin-top: 20px;
+}
+.tickets_vrapper{
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: #ffffff;
+}
+
+
+.tickets{
+  grid-area: tic;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.tickets_price{
+  color: #2196f3;
+  font-size: 24px;
+}
+
+.tickets_header{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.tickets_data{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.tickets_data__time_item{
+  margin-bottom: 0px;
+}
+
+.tickets_data__time_item, p{
+  margin-top: 0px;
+  text-align: start;
+}
+
+.App-logo {
+  height: 100px;
+  pointer-events: none;
+  padding: 30px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+
+
+// удалить потом эти стили
+.todo_wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+
+.todo_completed{
+  
+}
+
+.todo_delete{
+  background-color: red;
+}
