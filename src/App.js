@@ -2,7 +2,7 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 
-import logo from './Logo.svg'
+import logo from './logo.svg'
 import TransferFilter from './components/TransferFilter'
 import Sort from './components/Sort'
 import TicketList from './components/Ticket/TicketList'
