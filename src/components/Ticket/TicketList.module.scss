@@ -1,0 +1,53 @@
+.filterTickets{
+    border-radius: 5px;
+    width: 250px;
+    text-align: center;
+    line-height: 50px;
+    background: #2196f3;
+    color: #ffffff;
+    cursor: pointer;
+  
+  }
+  
+  
+  .tickets_data-wrapper{
+    margin-top: 20px;
+  }
+  .tickets_vrapper{
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background: #ffffff;
+  }
+  
+  
+  .tickets{
+    grid-area: tic;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .tickets_price{
+    color: #2196f3;
+    font-size: 24px;
+  }
+  
+  .tickets_header{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+  }
+  
+  .tickets_data{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+  }
+  
+  .tickets_data__time_item{
+    margin-bottom: 0px;
+  }
+  
+  .tickets_data__time_item, p{
+    margin-top: 0px;
+    text-align: start;
+  }

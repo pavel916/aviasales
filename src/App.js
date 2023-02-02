@@ -1,94 +1,73 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+import React, {useEffect} from 'react'
+import {connect} from 'react-redux'
+
+import logo from './Logo.svg'
+import TransferFilter from './components/TransferFilter'
+import Sort from './components/Sort'
+import TicketList from './components/Ticket/TicketList'
+import * as actions from './store/tickets/ticketsAction'
+import Error from './components/Error'
+import Loader from './components/Loader'
+import classes from './App.module.scss'
 
 
-import Tickets from "./components/Tickets";
-import Navigation from "./components/Navigation";
-import Sidebar from "./components/Sidebar";
-import logo from "./Logo.svg";
-import axios from "axios";
 
 
 
-function App() {
-  const [searhId, setSearchId] = useState();
-  const [tickets, setTickets] = useState([]);
-  const [stop, setStop] = useState(false);
-  const [sortTickets, setSortTickets] = useState([]);
-
-  // const dispatch = useDispatch()
+function App({
+  isError, searchId,
+  getSearchId, getTicketsStart,
+  getTicketsEnd, ticketsEnd,
+  isLoad,
+}) {
 
   useEffect(() => {
-    try {
-      axios
-        .get("https://aviasales-test-api.kata.academy/search")
-        .then((res) => {
-          const response = res.data;
-          setSearchId(response.searchId);
-        });
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
+    getSearchId()
+  }, [])
 
-  // console.log(searhId);
 
+  useEffect(() => {
+    if (searchId) getTicketsStart(searchId)
+  }, [searchId])
 
 
 
   useEffect(() => {
-    if (searhId && stop === false) {
-      async function subscribe() {
-        let response = await fetch(
-          `https://aviasales-test-api.kata.academy/tickets?searchId=${searhId}`
-        );
-        // console.log(response);
-        if (response.status === 502 || response.status === 500) {
-          await subscribe();
-        } else if (response.status === 404) {
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          await subscribe();
-        } else {
-          let ticketsPart = await response.json();
-          setTickets([...tickets, ...ticketsPart.tickets]);
-          if (ticketsPart.stop) {
-            setStop(true);
-          }
-        }
-      }
-      subscribe();
+    if (searchId) {
+      getTicketsEnd(searchId)
     }
-    // console.log(tickets)
-  }, [searhId, tickets, stop]);
-
-  useEffect(() => {
-    if (stop === true) {
-      setSortTickets(tickets.slice(0, 4));
-    }
-  }, [stop, tickets]);
-
+  }, [searchId, ticketsEnd])
 
 
 
   return (
-    <div className="App">
-      <div className="app-wrapper">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+    <div className={classes.App}>
+      <div className={classes['app-wrapper']}>
+        <header className={classes['App-header']}>
+          <img src={logo} className={classes['App-logo']} alt="logo" />
         </header>
-        <main className="main">
-          <Sidebar />
-          <Navigation />
-          <Tickets sortTickets={sortTickets}/>
-        </main>
+        <div>
+          {isLoad && <Loader/>}
+        </div>
+        {isError ? <Error /> : (
+          <main className={classes.main}>
+            <TransferFilter/>
+            <Sort/>
+            <TicketList/>
+          </main>
+        )}
       </div>
     </div>
-  );
+  )
 }
 
 
+const mapStateToProps = (state) => ({
+  isError: state.tickets.isError,
+  searchId: state.tickets.searchId,
+  ticketsEnd: state.tickets.ticketsEnd,
+  isLoad: state.tickets.isLoad,
+})
 
-
-
-
-export default  App;
+export default connect(mapStateToProps, actions)(App)

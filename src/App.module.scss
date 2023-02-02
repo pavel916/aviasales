@@ -1,0 +1,41 @@
+.App {
+    background: #e5e5e5;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  
+  
+  .app-wrapper{
+    min-height: 100vh;
+    max-width: 754px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .App-header {
+    
+   text-align: center;
+    
+  }
+  
+  
+  main{
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-areas: 
+    'said nav'
+    'said tic';
+  }
+
+  .App-logo {
+    height: 100px;
+    pointer-events: none;
+    padding: 30px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }

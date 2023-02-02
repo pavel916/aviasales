@@ -53,6 +53,7 @@ main{
   grid-area: said;
   color: #4a4a4a;
   width: 232px;
+  height: 300px;
   background: #ffffff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -69,7 +70,7 @@ main{
 .sidebar label:hover{
   background: #f1fcff;
 }
-.sidebar h3{
+.sidebar h5{
   margin-left: 10px;
 }
 
@@ -92,6 +93,7 @@ main{
   line-height: 50px;
   background: #2196f3;
   color: #ffffff;
+  cursor: pointer;
 
 }
 
@@ -144,26 +146,16 @@ main{
   padding: 30px;
 }
 
+.button-more{
+  width: 500px;
+  height: 30px;
+  background-color: #2196f3;
+  color: #e5e5e5;
+  border: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-
-
-
-// удалить потом эти стили
-.todo_wrapper{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-}
-
-.todo_completed{
-  
-}
-
-.todo_delete{
-  background-color: red;
 }
